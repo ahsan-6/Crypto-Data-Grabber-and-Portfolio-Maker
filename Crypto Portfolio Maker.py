@@ -18,9 +18,14 @@ for i in range(len(tran_df.index)):
     else:
         crypto_df.loc[tick]=[r.json()[tick]['last'],tran_df['Price'][i],tran_df['Quantity'][i],0,0]
 
+#if quantity 0 then drop the ticker row
+
 for tick in list(crypto_df.index):
-    crypto_df.loc[tick,'Profit/Loss']=(float(crypto_df['Last'][tick])-float(crypto_df['Average'][tick]))*crypto_df['Quantity'][tick]
-    crypto_df.loc[tick,'P/L%']=(crypto_df['Profit/Loss'][tick]/(crypto_df['Quantity'][tick]*crypto_df['Average'][tick]))*100
+    if float(crypto_df['Quantity'][tick])==0.0 :
+        crypto_df.drop(tick,inplace=True)
+    else:
+        crypto_df.loc[tick,'Profit/Loss']=(float(crypto_df['Last'][tick])-float(crypto_df['Average'][tick]))*crypto_df['Quantity'][tick]
+        crypto_df.loc[tick,'P/L%']=(crypto_df['Profit/Loss'][tick]/(crypto_df['Quantity'][tick]*crypto_df['Average'][tick]))*100
 
 print(crypto_df)
 crypto_df.to_excel('Portfolio.xlsx')
