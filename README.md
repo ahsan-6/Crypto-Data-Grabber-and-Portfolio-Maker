@@ -8,4 +8,4 @@ This program asks for transaction details for cryptocurrencies and list them in 
 # Portfolio Maker
 This program grabs data from transaction excel file and makes a portfolio with current price details.
 
-Python libraries required - pandas,xlrd,requests
+Python libraries required - pandas, xlrd, requests
