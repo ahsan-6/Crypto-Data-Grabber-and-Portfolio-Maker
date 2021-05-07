@@ -14,9 +14,9 @@ while(choice.lower()=='y'):
     ticker=input("Enter ticker=")
     tt_var=input("Type of transaction (b/s)=")
     volume=float(input("Enter quantity bought/sell="))
-    price=float(input("Enter price="))
+    cost=float(input("Enter cost="))
     
-    tran_df.loc[len(tran_df.index)] = [ticker, volume, price,tt_func(tt_var)]
+    tran_df.loc[len(tran_df.index)] = [ticker, volume, cost,tt_func(tt_var)]
 
     choice=input("Have more transactions to add y/n=")
 
